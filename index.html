@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Love & Cuteness 💕</title>
+    <title>My Love 💖</title>
     <style>
         * {
             margin: 0;
@@ -12,12 +12,13 @@
         }
 
         body {
-            font-family: 'Dancing Script', cursive;
+            font-family: 'Pacifico', cursive;
             min-height: 100vh;
             overflow: hidden;
-            background: linear-gradient(-45deg, #ffb6c1, #ff69b4, #ff1493);
+            background: linear-gradient(-45deg, #2a044a, #0b2e59, #7d2d7d);
             background-size: 400% 400%;
             animation: gradient 15s ease infinite;
+            color: #fff;
         }
 
         .love-animation {
@@ -35,18 +36,32 @@
             opacity: 0;
         }
 
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 50%;
+            animation: twinkle 3s infinite;
+        }
+
         @keyframes float {
             0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
             100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        @keyframes twinkle {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
         }
 
         .page {
             display: none;
             position: relative;
             z-index: 1;
-            padding: 20px;
+            padding: 30px;
             text-align: center;
-            color: white;
             height: 100vh;
             flex-direction: column;
             justify-content: center;
@@ -58,30 +73,61 @@
             animation: fadeIn 1s ease;
         }
 
+        .content-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            max-width: 1200px;
+        }
+
+        .message-container {
+            flex: 1;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
         .cute-msg {
-            font-size: 2.2em;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            font-size: 2em;
+            line-height: 1.6;
             margin: 20px 0;
-            max-width: 800px;
-            line-height: 1.5;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .image-frame {
+            flex: 1;
+            max-width: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border: 5px solid white;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .next-btn {
-            padding: 15px 40px;
+            padding: 15px 50px;
             font-size: 1.3em;
-            background: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 115, 136, 0.8);
             border: none;
             border-radius: 30px;
             color: white;
             cursor: pointer;
             transition: 0.3s;
             backdrop-filter: blur(5px);
-            margin-top: 20px;
+            margin-top: 30px;
+            font-family: 'Comfortaa', cursive;
         }
 
         .next-btn:hover {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 105, 180, 0.9);
             transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(255,105,180,0.4);
         }
 
         @keyframes gradient {
@@ -94,122 +140,257 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .image-frame {
+                max-width: 250px;
+            }
+            
+            .cute-msg {
+                font-size: 1.6em;
+            }
+        }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Comfortaa:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Live Love Animation -->
     <div class="love-animation" id="loveAnimation"></div>
 
     <!-- Pages -->
     <div class="page active-page" id="page1">
-        <div class="cute-msg">
-            💖 Ilma yaha pe Click kar Jann 👀...<br>
-            ...Chotu sa Surprise Hai! 💖
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image.jpeg" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    💖 Yaha Pe Click Kar Ilma... 🌙<br>
+                    Ek Chotu Sa Surprise Hai ✨
+                </div>
+                <button class="next-btn" onclick="nextPage()">Begin Our Journey 🌠</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Start 🐾</button>
     </div>
 
+    <!-- Repeat similar structure for other pages with different images -->
     <div class="page" id="page2">
-        <div class="cute-msg">
-            🌸 I Love You So Much ❤️🥺...<br>
-            ...Mera Pyara sa Ilma🌸
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image1.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸 I Love You So Much Ilma ❤️<br>
+                    Me Tujhe Bohut Jyada Pyar Karta Hu 🥺
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page3">
-        <div class="cute-msg">
-            🌸 Tune Bohut Special hai 🥺...<br>
-            ...Mera chotu sa Baccha 🌸
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image2.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Ilma Me Tujhe Itna Jyada Pyar Karta Hu ❤️<br>
+                    Ki Tu Kabhi Soch Bhi Nahi Sakta 🥺
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page4">
-        <div class="cute-msg">
-            🌸 Me tujhe Bohut Jyada 💋🥺...<br>
-            ...Pyar karta hu 🌸
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image3.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Me Subha Jab Bhi Uthtta Hu ❤️<br>
+                    Sabse Pehle Tujhe Yaad Karta Hu 🥺
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page5">
-        <div class="cute-msg">
-            🌸 Sab Jhuth Ho Sakta Hai 🥺...<br>
-            ...Pr Mera Pyar Kabhi Jhuth Nahi Ho Sakta 🌸
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image4.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Tune Kabhi Khudko Akela Mat Samajhna ❤️<br>
+                    Me Hamesha Tere Sath Hu 😘💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page6">
-        <div class="cute-msg">
-            🌸 Subha Uthtte hee 😘...<br>
-            ...Sabse pehle mere dimag me Sirf tera Naam ata hai 💋
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image5.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Koi Kuch Bhi Bole ❤️<br>
+                    Ayush Hamesha Ilma ke Sath Hai 😘💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page7">
-        <div class="cute-msg">
-            🌸 Me Tujhe Itna Jyada Pyar Karta Hu 😘...<br>
-            ...Ki tu Kabhi Soch Bhi Nahi Sakta 💋
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image6.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Tune Mera Sabkuch Hai ❤️<br>
+                    Wife, Best Friend, Family 😘💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
     <div class="page" id="page8">
-        <div class="cute-msg">
-            🌸 Tune Mera SabKuch Hai 😘...<br>
-            ...Mera Wife, Best Friend, Family 💋
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image7.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Sab Jhuth Ho Sakta Hai ❤️<br>
+                    Pr Mera Pyar Kabhi Jhuth Nahi Ho Sakta 😘💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
         </div>
-        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
     </div>
 
-    <!-- Add pages 3-7 following same pattern -->
+    <div class="page" id="page9">
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image8.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Tune Bohut Special Hai Jann ❤️<br>
+                    Jo Me Kabhi Bhi Explain Nahi Kar Sakta 🥺💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page10">
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image9.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸Tune Bohut Accha hai 🤗❤️<br>
+                    Sabse Aacha 🥺💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="page" id="page11">
+        <div class="content-wrapper">
+            <div class="image-frame">
+                <img src="image10.PNG" alt="Our Memory">
+            </div>
+            <div class="message-container">
+                <div class="cute-msg">
+                    🌸I Am Always With You 🤗❤️<br>
+                    I lobbb Youu Ilma 🥺💋
+                </div>
+                <button class="next-btn" onclick="nextPage()">Continue ❤️</button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Add remaining pages following same pattern -->
 
     <audio id="bgMusic" src="song.mp3"></audio>
 
     <script>
         let currentPage = 1;
-        const totalPages = 7;
+        const totalPages = 8;
+        const images = ['image.jpeg',  'image1.PNG', 'image2.PNG', 'image3.PNG', 'image4.PNG', 'image5.PNG', 'image6.PNG', 'image7.PNG', 'image8.PNG'];
 
-        // Create floating hearts
-        function createHearts() {
-            const animationContainer = document.getElementById('loveAnimation');
-            for(let i = 0; i < 50; i++) {
-                const heart = document.createElement('div');
-                heart.className = 'heart';
-                heart.innerHTML = '💖';
-                heart.style.left = Math.random() * 100 + '%';
-                heart.style.animationDelay = Math.random() * 5 + 's';
-                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
-                animationContainer.appendChild(heart);
+        // Create floating elements
+        function createElements() {
+            const container = document.getElementById('loveAnimation');
+            for(let i = 0; i < 100; i++) {
+                // Create stars
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 2 + 's';
+                container.appendChild(star);
+
+                // Create hearts occasionally
+                if(i % 5 === 0) {
+                    const heart = document.createElement('div');
+                    heart.className = 'heart';
+                    heart.innerHTML = '💖';
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDelay = Math.random() * 5 + 's';
+                    heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                    container.appendChild(heart);
+                }
             }
         }
-        createHearts();
+        createElements();
 
-        // Page navigation
         function nextPage() {
             document.getElementById(`page${currentPage}`).classList.remove('active-page');
             currentPage = currentPage % totalPages + 1;
-            document.getElementById(`page${currentPage}`).classList.add('active-page');
+            const newPage = document.getElementById(`page${currentPage}`);
+            newPage.classList.add('active-page');
             
-            // Start music on first click
-            if(currentPage === 2) {
-                document.getElementById('bgMusic').play();
+            // Update image source
+            const img = newPage.querySelector('img');
+            if(img) img.src = images[currentPage - 1];
+
+            if(currentPage === 1) {
+                document.getElementById('bgMusic').pause();
+            } else if(currentPage === 2) {
+                document.getElementById('bgMusic').play().catch(() => {});
             }
         }
 
-        // Add floating teddy bears occasionally
+        // Add floating elements occasionally
         setInterval(() => {
-            const teddy = document.createElement('div');
-            teddy.className = 'heart';
-            teddy.innerHTML = '🧸';
-            teddy.style.left = Math.random() * 100 + '%';
-            teddy.style.animationDuration = Math.random() * 3 + 5 + 's';
-            document.getElementById('loveAnimation').appendChild(teddy);
-        }, 3000);
+            const types = ['💖', '✨', '🌙', '🌸'];
+            const element = document.createElement('div');
+            element.className = 'heart';
+            element.innerHTML = types[Math.floor(Math.random() * types.length)];
+            element.style.left = Math.random() * 100 + '%';
+            element.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.getElementById('loveAnimation').appendChild(element);
+        }, 2000);
     </script>
 </body>
 </html>
