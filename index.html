@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love & Cuteness 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Dancing Script', cursive;
+            min-height: 100vh;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #ffb6c1, #ff69b4, #ff1493);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        .love-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 24px;
+            animation: float 6s linear infinite;
+            opacity: 0;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+
+        .page {
+            display: none;
+            position: relative;
+            z-index: 1;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            height: 100vh;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .active-page {
+            display: flex;
+            animation: fadeIn 1s ease;
+        }
+
+        .cute-msg {
+            font-size: 2.2em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin: 20px 0;
+            max-width: 800px;
+            line-height: 1.5;
+        }
+
+        .next-btn {
+            padding: 15px 40px;
+            font-size: 1.3em;
+            background: rgba(255, 255, 255, 0.3);
+            border: none;
+            border-radius: 30px;
+            color: white;
+            cursor: pointer;
+            transition: 0.3s;
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        .next-btn:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.05);
+        }
+
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Live Love Animation -->
+    <div class="love-animation" id="loveAnimation"></div>
+
+    <!-- Pages -->
+    <div class="page active-page" id="page1">
+        <div class="cute-msg">
+            💖 Ilma yaha pe Click kar Jann 👀...<br>
+            ...Chotu sa Surprise Hai! 💖
+        </div>
+        <button class="next-btn" onclick="nextPage()">Start 🐾</button>
+    </div>
+
+    <div class="page" id="page2">
+        <div class="cute-msg">
+            🌸 I Love You So Much ❤️🥺...<br>
+            ...Mera Pyara sa Ilma🌸
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page3">
+        <div class="cute-msg">
+            🌸 Tune Bohut Special hai 🥺...<br>
+            ...Mera chotu sa Baccha 🌸
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page4">
+        <div class="cute-msg">
+            🌸 Me tujhe Bohut Jyada 💋🥺...<br>
+            ...Pyar karta hu 🌸
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page5">
+        <div class="cute-msg">
+            🌸 Sab Jhuth Ho Sakta Hai 🥺...<br>
+            ...Pr Mera Pyar Kabhi Jhuth Nahi Ho Sakta 🌸
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page6">
+        <div class="cute-msg">
+            🌸 Subha Uthtte hee 😘...<br>
+            ...Sabse pehle mere dimag me Sirf tera Naam ata hai 💋
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page7">
+        <div class="cute-msg">
+            🌸 Me Tujhe Itna Jyada Pyar Karta Hu 😘...<br>
+            ...Ki tu Kabhi Soch Bhi Nahi Sakta 💋
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <div class="page" id="page8">
+        <div class="cute-msg">
+            🌸 Tune Mera SabKuch Hai 😘...<br>
+            ...Mera Wife, Best Friend, Family 💋
+        </div>
+        <button class="next-btn" onclick="nextPage()">Next 🐾</button>
+    </div>
+
+    <!-- Add pages 3-7 following same pattern -->
+
+    <audio id="bgMusic" src="song.mp3"></audio>
+
+    <script>
+        let currentPage = 1;
+        const totalPages = 7;
+
+        // Create floating hearts
+        function createHearts() {
+            const animationContainer = document.getElementById('loveAnimation');
+            for(let i = 0; i < 50; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.innerHTML = '💖';
+                heart.style.left = Math.random() * 100 + '%';
+                heart.style.animationDelay = Math.random() * 5 + 's';
+                heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+                animationContainer.appendChild(heart);
+            }
+        }
+        createHearts();
+
+        // Page navigation
+        function nextPage() {
+            document.getElementById(`page${currentPage}`).classList.remove('active-page');
+            currentPage = currentPage % totalPages + 1;
+            document.getElementById(`page${currentPage}`).classList.add('active-page');
+            
+            // Start music on first click
+            if(currentPage === 2) {
+                document.getElementById('bgMusic').play();
+            }
+        }
+
+        // Add floating teddy bears occasionally
+        setInterval(() => {
+            const teddy = document.createElement('div');
+            teddy.className = 'heart';
+            teddy.innerHTML = '🧸';
+            teddy.style.left = Math.random() * 100 + '%';
+            teddy.style.animationDuration = Math.random() * 3 + 5 + 's';
+            document.getElementById('loveAnimation').appendChild(teddy);
+        }, 3000);
+    </script>
+</body>
+</html>
